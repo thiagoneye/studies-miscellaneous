@@ -2,6 +2,8 @@
 Estudo sobre web scraping com python.
 
 Busca de gênero de bandas.
+
+Reference: https://www.geeksforgeeks.org/web-scraping-from-wikipedia-using-python-a-complete-guide/
 """
 
 # Importações
