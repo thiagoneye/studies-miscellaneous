@@ -2,8 +2,6 @@
 Estudo sobre web scraping com python.
 
 Busca de gênero de bandas.
-
-Reference: https://www.geeksforgeeks.org/web-scraping-from-wikipedia-using-python-a-complete-guide/
 """
 
 # Importações
@@ -24,5 +22,14 @@ html = requests.get(wiki+banda)
 soup = BeautifulSoup(html.content, 'html.parser')
 
 # Procura por os termos chaves
-genre = soup.find("td", style="vertical-align: top; text-align: left;")
-# print(genre)
+genre = soup.find(class_='mw-workspace-container')
+genre = genre.find(class_='mw-content-container')
+genre = genre.find(id='content')
+genre = genre.find(id='bodyContent')
+genre = genre.find(id='mw-content-text')
+genre = genre.find_all(class_='infobox infobox infobox_v2')[0]
+genre = genre.find_all('tr')[5].find_all('a')[1].get_text()
+
+# Prints
+
+print(genre)
